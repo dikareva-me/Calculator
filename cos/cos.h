@@ -11,7 +11,7 @@ public:
 		if (num.size() != 1)
 			throw std::exception("Invalid input: Cos must have one operand");
 
-		return sin(num.at(0));
+		return cos(num.at(0));
 	}
 
 	~Cos() = default;
