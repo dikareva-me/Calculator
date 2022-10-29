@@ -5,9 +5,9 @@
 #include <functional>
 
 
-command_ptr mult = std::make_shared<Multiplication>();
+command_ptr mult = std::make_shared <Multiplication>();
 command_ptr division = std::make_shared <Division>();
-command_ptr minus = std::make_shared <Substaction>();
+command_ptr minus = std::make_shared <Substraction>();
 command_ptr plus = std::make_shared <Addition>();
 command_ptr unary_minus = std::make_shared <Unary_minus>();
 
