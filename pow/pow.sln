@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "calc_ver2", "calc_ver2.vcxproj", "{8A6D682F-F9C3-4CAD-8D1E-997CC70B41EA}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pow", "pow\pow.vcxproj", "{A5AD2AE4-F271-405B-B8D1-A92F89F97B69}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pow", "pow.vcxproj", "{A5AD2AE4-F271-405B-B8D1-A92F89F97B69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,14 +13,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8A6D682F-F9C3-4CAD-8D1E-997CC70B41EA}.Debug|x64.ActiveCfg = Debug|x64
-		{8A6D682F-F9C3-4CAD-8D1E-997CC70B41EA}.Debug|x64.Build.0 = Debug|x64
-		{8A6D682F-F9C3-4CAD-8D1E-997CC70B41EA}.Debug|x86.ActiveCfg = Debug|Win32
-		{8A6D682F-F9C3-4CAD-8D1E-997CC70B41EA}.Debug|x86.Build.0 = Debug|Win32
-		{8A6D682F-F9C3-4CAD-8D1E-997CC70B41EA}.Release|x64.ActiveCfg = Release|x64
-		{8A6D682F-F9C3-4CAD-8D1E-997CC70B41EA}.Release|x64.Build.0 = Release|x64
-		{8A6D682F-F9C3-4CAD-8D1E-997CC70B41EA}.Release|x86.ActiveCfg = Release|Win32
-		{8A6D682F-F9C3-4CAD-8D1E-997CC70B41EA}.Release|x86.Build.0 = Release|Win32
 		{A5AD2AE4-F271-405B-B8D1-A92F89F97B69}.Debug|x64.ActiveCfg = Debug|x64
 		{A5AD2AE4-F271-405B-B8D1-A92F89F97B69}.Debug|x64.Build.0 = Debug|x64
 		{A5AD2AE4-F271-405B-B8D1-A92F89F97B69}.Debug|x86.ActiveCfg = Debug|Win32
@@ -36,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E58C6DA4-6C81-415C-91D7-5B2B0D6B8FAC}
+		SolutionGuid = {05A801CC-35EA-40B3-8087-E540644FFB6A}
 	EndGlobalSection
 EndGlobal

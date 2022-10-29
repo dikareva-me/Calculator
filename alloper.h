@@ -10,21 +10,13 @@
 #include <windows.h>
 #include <iostream>
 
-
 using command_ptr = std::shared_ptr<Command>;
-//using dll_operations = std::list<Command> *();
-using oper_map_t = std::map<std::string, command_ptr>;
-typedef Command* (*dll_operations)();
+using oper_map_t = std::map<string, command_ptr>;
+
 
 class Operations {
 public:
-
-
-	//typedef std::map<int, char> KeyMap;
-	//static KeyMap km;
-
-	//void initOpers();
-	void loadDLL(const std::string& path);
+	void loadDLL(const string& path);
 
 	~Operations() {
 		for (auto& dll : libs)
@@ -32,8 +24,17 @@ public:
 		operations.clear();
 	}
 
-	//std::vector <Command> opers;
-	std::vector<HMODULE> libs;
 	static oper_map_t operations;
+
+private:
+	std::vector<HMODULE> libs;
 };
 
+class Wrapper_dllfunc {
+public:
+	Wrapper_dllfunc(command_ptr dll_oper) : func_class(dll_oper) {}
+
+	command_ptr func_class;
+};
+
+using dll_operations = Wrapper_dllfunc * (*)();

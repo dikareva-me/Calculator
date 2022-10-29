@@ -4,11 +4,7 @@
 
 class Calculator {
 public:
-	//Parser parser{ expr };
-	//Operations possible_opers;
-
-
-	void run(const std::string& path);
+	void run(const string& path);
 	double calculate(Parser& parser);
-	std::string expr;
+	string expr;
 };

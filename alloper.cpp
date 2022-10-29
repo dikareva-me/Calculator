@@ -4,8 +4,6 @@
 #include <exception>
 #include <functional>
 
-//Operations::KeyMap Operations::km = { {1, 'a'}, {2, 'b'} };
-
 
 command_ptr mult = std::make_shared<Multiplication>();
 command_ptr division = std::make_shared <Division>();
@@ -23,8 +21,7 @@ oper_map_t Operations::operations = {
 };
 
 
-void Operations::loadDLL(const std::string& path) {
-	/*
+void Operations::loadDLL(const string& path) {
 	if (!std::filesystem::exists(path))
 		throw std::exception("Error: No files in file input");
 
@@ -33,30 +30,14 @@ void Operations::loadDLL(const std::string& path) {
 		if (!dll)
 			throw std::exception("Error: Files in directory is not dll format");
 
-		auto loader = (dll_operations)GetProcAddress(dll, "LoadOperation");
+		dll_operations loader = (dll_operations)GetProcAddress(dll, "LoadOperation");
+		auto err = GetLastError();
 		if (!loader)
 			throw std::exception("Error: Invalid dll library");
-		Command* op = loader();
-		operations[op->to_string()] = std::make_shared<Command>(op);
+
+		Wrapper_dllfunc* wrp = loader();
+		operations[wrp->func_class->to_string()] = command_ptr(wrp->func_class);
 
 		libs.emplace_back(dll);
-		/*dll_operations* func = (dll_operations*)GetProcAddress(dll, "GetOperations");
-		if (func == static_cast<dll_operations*>(NULL)) {
-			FreeLibrary(dll);
-			throw std::exception("Error: Invalid dll library");
-			continue;
-		}
-
-		auto opers = func();
-		if (!opers) {
-			FreeLibrary(dll);
-			continue;
-		}
-		std::for_each(opers->begin(), opers->end(),
-			[this](Command& op) {
-				operations.emplace(op.to_string(), std::make_shared<Command>(op));
-			});
-	//	delete opers;
-		libs.emplace_back(dll);
-	}*/
+	}
 }

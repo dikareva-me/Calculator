@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-class Calculator;
+using std::string;
 
 class Command {
 public:
@@ -19,11 +19,10 @@ public:
 	};
 
 
-	Command(std::string _val, CommandType _type = CommandType::binary,
+	Command(string _val, CommandType _type = CommandType::binary,
 		Priority _prior = Priority::low) : val(_val), type(_type), prior(_prior) {};
 
 	virtual double execute(const std::vector<double>&) = 0;
-//	virtual double undo() = 0;
 
 	Priority getPriority() {
 		return prior;
@@ -33,7 +32,7 @@ public:
 		return type;
 	}
 
-	std::string to_string() {
+	string to_string() {
 		return val;
 	}
 	virtual ~Command() = default;
@@ -41,7 +40,7 @@ public:
 protected:
 	CommandType type;
 	Priority prior;
-	std::string val;
+	string val;
 };
 
 

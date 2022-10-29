@@ -1,6 +1,6 @@
 #include "parser.h"
 
-void Parser::parse(std::string& token, int& inout_iter) {
+void Parser::parse(string& token, int& inout_iter) {
 	if (isdigit(expr[inout_iter])) {
 		while (isdigit(expr[inout_iter]) || expr[inout_iter] == '.' && inout_iter < expr.size()) {
 			token.insert(token.end(), expr[inout_iter]);
@@ -13,7 +13,7 @@ void Parser::parse(std::string& token, int& inout_iter) {
 	}
 	else {
 		for (auto& str_oper : Operations::operations) {
-			std::string tmp = expr.substr(inout_iter, str_oper.first.size());
+			string tmp = expr.substr(inout_iter, str_oper.first.size());
 			if (tmp.compare(str_oper.first) == 0) {
 				inout_iter += tmp.size();
 				token = tmp;
@@ -25,32 +25,32 @@ void Parser::parse(std::string& token, int& inout_iter) {
 }
 
 
-bool Parser::isOperation(const std::string& token) {
+bool Parser::isOperation(const string& token) {
 	return Operations::operations.find(token) != Operations::operations.end();
 }
 
-bool Parser::isPrefix(const std::string& token) {
+bool Parser::isPrefix(const string& token) {
 	auto oper = Operations::operations.find(token);
 	if (oper == Operations::operations.end())
 		return false;
 	return oper->second->getType() == Command::CommandType::prefix;
 }
 
-bool Parser::isPostfix(const std::string& token) {
+bool Parser::isPostfix(const string& token) {
 	auto oper = Operations::operations.find(token);
 	if (oper == Operations::operations.end())
 		return false;
 	return oper->second->getType() == Command::CommandType::postfix;
 }
 
-bool Parser::isBinary(const std::string& token) {
+bool Parser::isBinary(const string& token) {
 	auto oper = Operations::operations.find(token);
 	if (oper == Operations::operations.end())
 		return false;
 	return oper->second->getType() == Command::CommandType::binary;
 }
 
-bool Parser::isLiteral(const std::string& str) {
+bool Parser::isLiteral(const string& str) {
 	if (str.empty() || str == "-")
 		return false;
 
@@ -62,7 +62,7 @@ bool Parser::isLiteral(const std::string& str) {
 }
 
 
-bool Parser::cmpPriority(const std::string& oper1, const std::string& oper2) {
+bool Parser::cmpPriority(const string& oper1, const string& oper2) {
 	auto tmp1 = Operations::operations.find(oper1);
 	auto tmp2 = Operations::operations.find(oper2);
 
@@ -78,7 +78,7 @@ void Parser::closeBrackets() {
 	token_stack.pop();
 }
 
-void Parser::proccessBinaryOps(const std::string& token) {
+void Parser::proccessBinaryOps(const string& token) {
 	while (!token_stack.empty() && isOperation(token_stack.top()) && 
 		(isPrefix(token_stack.top()) || cmpPriority(token_stack.top(), token))) {
 		RPN.push_back(token_stack.top());
@@ -95,7 +95,7 @@ void Parser::toRPN() {
 			i++;
 			continue;
 		}
-		std::string token;
+		string token;
 		parse(token, i);
 		if (isLiteral(token) || isPostfix(token))
 			RPN.emplace_back(token);
